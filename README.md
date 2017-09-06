@@ -2,6 +2,7 @@
 Rename a directory full of photos with the dates they were taken
 
 How To Run:
+Make sure to create backups for your files, you never know!
 Double Click - Follow Instructions
 
 Tested with Windows 10.

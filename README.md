@@ -24,3 +24,5 @@ The Result:
 02.09.2017.17.48.58.jpg
 02.09.2017.17.48.32.jpg
 02.09.2017.17.48.44.jpg
+
+It will also ask you to organise into folders; if you select yes, pictures will be saved in folders according to the month of the year.

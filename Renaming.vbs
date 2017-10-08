@@ -16,7 +16,7 @@ Option Explicit
 Main
 
 Sub Main
-    Dim fso, path, file, strVcfFile, Dir, nName, Ext
+    Dim fso, path, file, strVcfFile, Dir, nName, Ext, FoldOption, FoldName
 
     Set fso = CreateObject("Scripting.FileSystemObject")
     
@@ -33,6 +33,15 @@ Sub Main
 
     'Get File Extension
     Ext = InputBox("What types of files?",,"jpg")
+    
+    FoldOption = MsgBox ("Would you like to organise into folders?", vbYesNo + vbQuestion, "Folder Option")
+
+    Select Case FoldOption
+    Case vbYes
+        'Check the date, if exists, put it in, if not create folder and put it in.
+        ' Create a new folder
+        ' fso.CreateFolder Dir & 
+    End Select
 
     'Rename Files in the Folder with Ext to Their Date Last Modified
     For Each file in fso.GetFolder(Dir).Files
@@ -54,7 +63,17 @@ Sub Main
                 Err.Clear
                 file.Name = nName & "." & Ext
             Loop
-
+            
+            If FoldOption = vbYes Then
+                FoldName = Left(nName,10)
+                FoldName = Right(FoldName,4) & "-" & Right(Left(nName,5),2)
+                FoldName = Dir & "\" & FoldName
+                If Not fso.FolderExists(FoldName) Then fso.CreateFolder FoldName End If
+                FoldName = FoldName & "\"
+                fso.MoveFile Dir & "\" & file.Name, FoldName
+            End If
+            
         End If
     Next
+
 End Sub
